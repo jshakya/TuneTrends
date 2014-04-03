@@ -14,12 +14,25 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		Button submitBtn = (Button) findViewById(R.id.submitBtn);
+		Button registerBtn = (Button) findViewById(R.id.registerBtn);
+		
 		submitBtn.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(getApplicationContext(), MenuScreen.class);
+				startActivity(i);
+				finish();
+			}
+		});
+		
+		registerBtn.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(getApplicationContext(), Register.class);
 				startActivity(i);
 				finish();
 			}
