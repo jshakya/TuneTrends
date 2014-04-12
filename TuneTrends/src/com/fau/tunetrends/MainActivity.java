@@ -13,6 +13,7 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
 		Button submitBtn = (Button) findViewById(R.id.submitBtn);
 		Button registerBtn = (Button) findViewById(R.id.registerBtn);
 		
