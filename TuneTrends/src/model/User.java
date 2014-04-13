@@ -21,6 +21,7 @@ public class User {
 		setFName(fName);
 		setLName(lName);
 		setGroup(group);
+		currentUser = this;
 	}
 	
 	/**
@@ -103,9 +104,11 @@ public class User {
 	{
 		this.group = group;
 	}
+	
 	private String fName;
 	private String lName;
 	private UserGroup group;
+	public static User currentUser;
 	
 
 }

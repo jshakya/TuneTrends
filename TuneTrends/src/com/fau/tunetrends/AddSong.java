@@ -26,8 +26,7 @@ public class AddSong extends Activity {
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 				Track track = new Track (title.getText().toString(), artist.getText().toString());
-				User currentUser = new User(); //How Do I get the current user????
-				currentUser.getGroup().getTrackList().addSong(track);
+				User.currentUser.getGroup().getTrackList().addSong(track);
 			}
 		});
 	}
