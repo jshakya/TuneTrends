@@ -14,6 +14,7 @@ public class Track {
 		// TODO Auto-generated constructor stub
 		setTitle(new String());
 		setArtist(new String());
+		//this.ratingValue = 0;
 		setRatingValue(0);
 	}
 	

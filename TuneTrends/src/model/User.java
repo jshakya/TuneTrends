@@ -106,5 +106,6 @@ public class User {
 	private String fName;
 	private String lName;
 	private UserGroup group;
+	
 
 }
