@@ -36,38 +36,14 @@ public class MenuScreen extends Activity {
 			datum.put("artist", t.getArtist());
 			song.add(datum);
 		}
-		/*
-		Map<String, String> song2 = new HashMap<String, String>(2);
-		datum.put("title", "song2");
-		datum.put("artist", "artist2");
-		song.add(song2);*/
 		
 		SimpleAdapter adapter = new SimpleAdapter(this, song,
                 android.R.layout.simple_list_item_2,
                 new String[] {"title", "artist"},
                 new int[] {android.R.id.text1,
                            android.R.id.text2});
-		//itemList.setAdapter(adapter);
-		
-		
-		
-		
-		
 		
 		lv = (ListView) findViewById(R.id.trackList);
-		/*
-		List<String> songsList = new ArrayList<String>();
-		songsList.add("foo");
-		songsList.add("bar");
-		
-		// This is the array adapter, it takes the context of the activity as a 
-        // first parameter, the type of list view as a second parameter and your 
-        // array as a third parameter.
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
-                this, 
-                android.R.layout.simple_list_item_1,
-                songsList );
-*/
         lv.setAdapter(adapter); 
 	}
 
