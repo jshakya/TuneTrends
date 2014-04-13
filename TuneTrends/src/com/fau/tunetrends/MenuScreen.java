@@ -9,7 +9,9 @@ import model.Track;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
@@ -53,6 +55,17 @@ public class MenuScreen extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.menu_screen, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		if (item.getItemId() == R.id.item2)
+		{
+			Intent i = new Intent(getApplicationContext(), AddSong.class);
+			startActivity(i);
+			finish();
+		}
+		return (super.onOptionsItemSelected(item));
 	}
 
 }
