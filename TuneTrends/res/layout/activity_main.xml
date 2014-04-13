@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Tune Trends"
+            android:text="@string/appTitleTxt"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
     </LinearLayout>
@@ -34,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="email"
+            android:hint="@string/emailHint"
             android:inputType="textEmailAddress" >
 
             <requestFocus />
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:hint="password"
+            android:hint="@string/passwordHint"
             android:inputType="textPassword" />
 
     </LinearLayout>
@@ -55,13 +55,14 @@
         android:id="@+id/submitBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Submit" />
+        android:text="@string/submitBtnTxt" />
 
     <Button
         android:id="@+id/registerBtn"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Register" />
+        android:text="@string/registerBtnTxt"
+         />
 
 </LinearLayout>
