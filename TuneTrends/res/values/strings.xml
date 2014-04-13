@@ -10,8 +10,11 @@
     <string name="emailHint">email</string>
     <string name="appTitleTxt">Tune Trends</string>
     <string name="registerBtnTxt">Register</string>
-    <string name="submitBtnTxt">Submit</string>
+    <string name="submitBtnTxt">Log In</string>
     <string name="passwordHint">Password</string>
     <string name="title_activity_add_song">AddSong</string>
+    <string name="emailPlaceholder">Email/Username</string>
+    <string name="fNamePlaceholder">First Name</string>
+    <string name="lNamePlaceholder">Last Name</string>
 
 </resources>
