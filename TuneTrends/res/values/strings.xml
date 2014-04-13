@@ -12,5 +12,6 @@
     <string name="registerBtnTxt">Register</string>
     <string name="submitBtnTxt">Submit</string>
     <string name="passwordHint">Password</string>
+    <string name="title_activity_add_song">AddSong</string>
 
 </resources>
