@@ -23,6 +23,7 @@ public class MenuScreen extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
 		setContentView(R.layout.activity_menu_screen);
 		List <Track> trackList = new ArrayList<Track>();
 		trackList.add(new Track("foo", "bar"));
