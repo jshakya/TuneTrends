@@ -83,6 +83,23 @@ public class Track {
 		this.ratingValue = ratingValue;
 	}
 	
+	/**
+	 * Up rate the ratings		
+	 */
+	public void upRateValue()
+	{
+		this.ratingValue++;
+	}
+	
+	/**
+	 * Down rate the ratings		
+	 */
+	public void downRateValue()
+	{
+		if (this.ratingValue > 0)
+			this.ratingValue--;
+	}
+	
 	private String title;
 	private String artist;
 	private int ratingValue;
