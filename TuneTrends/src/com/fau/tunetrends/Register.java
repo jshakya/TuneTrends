@@ -9,17 +9,18 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class Register extends Activity {
-	Button registerBtn = (Button) findViewById(R.id.registerUserBtn);
-	EditText fName = (EditText) findViewById(R.id.fName);
-	EditText lName =(EditText) findViewById(R.id.lName);
-	EditText email = (EditText) findViewById(R.id.email);
-	EditText password = (EditText) findViewById(R.id.password);
 	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
+
+		Button registerBtn = (Button) findViewById(R.id.registerUserBtn);
+		final EditText fName = (EditText) findViewById(R.id.fName);
+		final EditText lName =(EditText) findViewById(R.id.lName);
+		final EditText email = (EditText) findViewById(R.id.email);
+		final EditText password = (EditText) findViewById(R.id.password);
 		
 		registerBtn.setOnClickListener(new View.OnClickListener() {
 			

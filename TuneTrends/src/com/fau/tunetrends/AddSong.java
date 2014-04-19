@@ -10,15 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class AddSong extends Activity {
-	
-	Button addSong = (Button) findViewById(R.id.addSong);
-	EditText title = (EditText) findViewById(R.id.title);
-	EditText artist = (EditText) findViewById(R.id.artist);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_song);
+		final Button addSong = (Button) findViewById(R.id.addSong);
+		final EditText title = (EditText) findViewById(R.id.title);
+		final EditText artist = (EditText) findViewById(R.id.artist);
 		
 		addSong.setOnClickListener(new View.OnClickListener() {
 			

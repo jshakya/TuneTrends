@@ -11,5 +11,6 @@ public class UserGroup {
 		return this.tracklist;
 	}
 	private TrackList tracklist;
+	private int groupCode;
 
 }
