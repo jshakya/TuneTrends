@@ -58,13 +58,24 @@ public class MenuScreen extends Activity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
+		switch(item.getItemId()) {
+		case R.id.item2:
+	        Intent intent = new Intent(this, AddSong.class);
+	        this.startActivity(intent);
+	        break;
+		default:
+	        return super.onOptionsItemSelected(item);
+		}
+		/*
 		if (item.getItemId() == R.id.item2)
 		{
-			Intent i = new Intent(getApplicationContext(), AddSong.class);
-			startActivity(i);
-			finish();
+			Intent i = new Intent(getApplication(), AddSong.class);
+			//startActivity(i);
+			//finish();
+			
 		}
-		return (super.onOptionsItemSelected(item));
+		return (super.onOptionsItemSelected(item));*/
+		return true;
 	}
 
 }
