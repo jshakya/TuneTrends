@@ -16,22 +16,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Song Title" >
-
+        android:hint="@string/songTitleTxt" >
         <requestFocus />
     </EditText>
-
     <EditText
         android:id="@+id/artist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Artist Name" />
-
+        android:hint="@string/artistNameTxt" />
     <Button
         android:id="@+id/addSong"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Song" />
-
+        android:text="@string/addSongTxt" />
 </LinearLayout>

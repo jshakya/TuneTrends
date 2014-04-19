@@ -16,7 +16,7 @@ public class Track {
 		setArtist(new String());
 		//this.ratingValue = 0;
 		setRatingValue(0);
-	}
+	} 
 	
 	/**
 	 * MDR -- Use this constructor to create a new Track. Rating Value will be set to zero

@@ -16,5 +16,8 @@
     <string name="emailPlaceholder">Email/Username</string>
     <string name="fNamePlaceholder">First Name</string>
     <string name="lNamePlaceholder">Last Name</string>
+    <string name="songTitleTxt">Song Title</string>
+    <string name="artistNameTxt">Artist Name</string>
+    <string name="addSongTxt">Add Song</string>
 
 </resources>
