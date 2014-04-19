@@ -1,5 +1,6 @@
 package com.fau.tunetrends;
 
+import model.User;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -10,6 +11,10 @@ import android.widget.EditText;
 public class Register extends Activity {
 	Button registerBtn = (Button) findViewById(R.id.registerUserBtn);
 	EditText fName = (EditText) findViewById(R.id.fName);
+	EditText lName =(EditText) findViewById(R.id.lName);
+	EditText email = (EditText) findViewById(R.id.email);
+	EditText password = (EditText) findViewById(R.id.password);
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +26,12 @@ public class Register extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				String firstName = fName.getText().toString();
+				String fNameString = fName.getText().toString();
+				String lNameString = lName.getText().toString();
+				String emailString = email.getText().toString();
+				String passwordString = password.getText().toString();
+				
+				User registeredUser = new User(fNameString, lNameString, emailString , passwordString);
 				//Get values from fields
 				
 				//Create new User

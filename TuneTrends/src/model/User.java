@@ -16,11 +16,13 @@ public class User {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public User(String fName, String lName, UserGroup group)
+	public User(String fName, String lName, String email, String password)// ,UserGroup group)
 	{
 		setFName(fName);
 		setLName(lName);
-		setGroup(group);
+		//setGroup(group);
+		setEmail(email);
+		setPassword(password);
 		currentUser = this;
 	}
 	
