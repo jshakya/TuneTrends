@@ -10,6 +10,13 @@ public class UserGroup {
 	{
 		return this.tracklist;
 	}
+	
+	public int getGroupCode(){
+		return this.groupCode;
+	}
+	public void setGroupCode(int groupCode){
+		this.groupCode = groupCode;
+	}
 	private TrackList tracklist;
 	private int groupCode;
 
