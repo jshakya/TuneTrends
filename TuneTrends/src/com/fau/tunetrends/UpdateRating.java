@@ -12,8 +12,9 @@ public class UpdateRating extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_update_rating);
 		int position = 0;
+		
 		final Bundle extras = getIntent().getExtras();
-		if (extras.getString("position") != null)
+		if (extras != null)
 		{
 			position = (int) extras.getLong("position");
 			Toast.makeText(getApplicationContext(),
