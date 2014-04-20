@@ -6,6 +6,7 @@ public class UserGroup {
 
 	public UserGroup() {
 		// TODO Auto-generated constructor stub
+		this.tracklist = new TrackList();
 	}
 	
 	public static TrackList getTrackList()

@@ -11,6 +11,11 @@ import java.util.Comparator;
  */
 public class TrackList {
 	
+	public TrackList ()
+	{
+		trackList = new ArrayList<Track>();
+	}
+	
 	/**
 	 * This adds the track to the list
 	 * @param track to be added to the list
