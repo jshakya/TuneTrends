@@ -11,6 +11,10 @@ public class UserGroup {
 	
 	public static TrackList getTrackList()
 	{
+		if (tracklist == null)
+		{
+			tracklist = new TrackList();
+		}
 		return tracklist;
 	}
 	
