@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 public class UserGroup {
 
 	public UserGroup() {
@@ -8,7 +10,7 @@ public class UserGroup {
 	
 	public TrackList getTrackList()
 	{
-		return this.tracklist;
+		return tracklist;
 	}
 	
 	public int getGroupCode(){
@@ -17,7 +19,15 @@ public class UserGroup {
 	public void setGroupCode(int groupCode){
 		this.groupCode = groupCode;
 	}
-	private TrackList tracklist;
-	private int groupCode;
+	public ArrayList <User> getListUsers() {
+		return listUsers;
+	}
 
+	public void setListUsers(ArrayList <User> listUsers) {
+		this.listUsers = listUsers;
+	}
+	
+	private static TrackList tracklist;
+	private int groupCode;
+	private ArrayList <User> listUsers;
 }
