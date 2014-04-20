@@ -22,9 +22,10 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
+				
 				Intent i = new Intent(getApplicationContext(), MenuScreen.class);
 				startActivity(i);
-				finish();
+				//finish();
 			}
 		});
 		
@@ -35,7 +36,7 @@ public class MainActivity extends Activity {
 				// TODO Auto-generated method stub
 				Intent i = new Intent(getApplicationContext(), Register.class);
 				startActivity(i);
-				finish();
+				//finish();
 			}
 		});
 		

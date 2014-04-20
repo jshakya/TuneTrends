@@ -39,6 +39,7 @@ public class Register extends Activity {
 				
 			}
 		});
+		
 	}
 
 	@Override

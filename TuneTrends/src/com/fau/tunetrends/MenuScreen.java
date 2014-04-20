@@ -77,7 +77,7 @@ public class MenuScreen extends Activity {
 			    Intent i = new Intent (getApplicationContext(), UpdateRating.class);
 			    i.putExtra("position", id);
 			    startActivity(i);
-			    finish();
+			    //finish();
 			    
 			}
 		});
