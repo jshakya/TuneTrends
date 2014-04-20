@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 
 import model.Track;
+import model.TrackList;
+import model.UserGroup;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -26,11 +28,20 @@ public class MenuScreen extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_menu_screen);
-		List <Track> trackList = new ArrayList<Track>();
-		trackList.add(new Track("foo", "bar"));
-		trackList.add(new Track("foo2", "bar2"));
+		//List <Track> trackList = new ArrayList<Track>();
+		TrackList trackList = UserGroup.getTrackList();
+		//trackList.addSong(new Track("foo", "bar"));
+		//trackList.addSong(new Track("foo2", "bar2"));
 		
 		List<Map<String, String>> song = new ArrayList<Map<String, String>>();
+		for (int i = 0; i < trackList.countSongs(); i++)
+		{
+			Map<String, String> datum = new HashMap<String, String>(2);
+			datum.put("title", trackList.getTrackList().get(i).getTitle());
+			datum.put("artist",trackList.getTrackList().get(i).getArtist());
+			song.add(datum);
+		}
+		/*
 		for (Track t : trackList)
 		{
 			Map<String, String> datum = new HashMap<String, String>(2);
@@ -38,6 +49,7 @@ public class MenuScreen extends Activity {
 			datum.put("artist", t.getArtist());
 			song.add(datum);
 		}
+		*/
 		
 		SimpleAdapter adapter = new SimpleAdapter(this, song,
                 android.R.layout.simple_list_item_2,
