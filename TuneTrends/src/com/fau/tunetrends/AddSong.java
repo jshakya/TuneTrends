@@ -4,10 +4,12 @@ import model.Track;
 import model.User;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class AddSong extends Activity {
 
@@ -24,8 +26,22 @@ public class AddSong extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Track track = new Track (title.getText().toString(), artist.getText().toString());
-				User.currentUser.getGroup().getTrackList().addSong(track);
+				if (title.getText().length() != 0 && artist.getText().length() != 0)
+				{
+					Track track = new Track (title.getText().toString(), artist.getText().toString());
+					//User.currentUser.getGroup().getTrackList().addSong(track);
+				
+					Intent i = new Intent(getApplicationContext(), MenuScreen.class);
+					startActivity(i);
+					finish();
+				}
+				else
+				{
+					Toast.makeText(getApplicationContext(),
+	                	      "Fields empty", Toast.LENGTH_LONG)
+	                	      .show();
+				}
+
 			}
 		});
 	}
