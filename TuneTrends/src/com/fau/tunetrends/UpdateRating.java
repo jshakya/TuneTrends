@@ -3,6 +3,7 @@ package com.fau.tunetrends;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
+import android.widget.Toast;
 
 public class UpdateRating extends Activity {
 
@@ -10,6 +11,19 @@ public class UpdateRating extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_update_rating);
+		int position = 0;
+		final Bundle extras = getIntent().getExtras();
+		if (extras.getString("position") != null)
+		{
+			position = (int) extras.getLong("position");
+			Toast.makeText(getApplicationContext(),
+					String.valueOf(position), Toast.LENGTH_SHORT).show();
+		}
+		else
+		{
+			Toast.makeText(getApplicationContext(),
+					"error", Toast.LENGTH_SHORT).show();
+		}
 	}
 
 	@Override
