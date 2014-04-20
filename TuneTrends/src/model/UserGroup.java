@@ -8,7 +8,7 @@ public class UserGroup {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public TrackList getTrackList()
+	public static TrackList getTrackList()
 	{
 		return tracklist;
 	}

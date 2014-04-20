@@ -2,6 +2,7 @@ package com.fau.tunetrends;
 
 import model.Track;
 import model.User;
+import model.UserGroup;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -29,7 +30,7 @@ public class AddSong extends Activity {
 				if (title.getText().length() != 0 && artist.getText().length() != 0)
 				{
 					Track track = new Track (title.getText().toString(), artist.getText().toString());
-					//User.currentUser.getGroup().getTrackList().addSong(track);
+					UserGroup.getTrackList().addSong(track);
 				
 					Intent i = new Intent(getApplicationContext(), MenuScreen.class);
 					startActivity(i);
