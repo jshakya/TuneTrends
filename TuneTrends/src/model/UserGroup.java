@@ -14,6 +14,7 @@ public class UserGroup {
 		if (tracklist == null)
 		{
 			tracklist = new TrackList();
+			tracklist.addSong("Song 1", "Artist 1");
 		}
 		return tracklist;
 	}

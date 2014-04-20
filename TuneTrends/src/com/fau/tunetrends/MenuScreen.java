@@ -14,8 +14,13 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 public class MenuScreen extends Activity {
 	
@@ -59,6 +64,24 @@ public class MenuScreen extends Activity {
 		
 		lv = (ListView) findViewById(R.id.trackList);
         lv.setAdapter(adapter); 
+        
+        
+		lv.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+			    // When clicked, show a toast with the TextView text
+				//String number = String.valueOf(id);
+			    //Toast.makeText(getApplicationContext(),
+				//number, Toast.LENGTH_SHORT).show();
+			    
+			    String artist = String.valueOf(UserGroup.getTrackList().getTrackList().get((int) id).getRatingValue());
+			    
+			    Toast.makeText(getApplicationContext(),
+			    		artist, Toast.LENGTH_SHORT).show();
+			}
+		});
+        
+
 	}
 
 	@Override
