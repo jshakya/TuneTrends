@@ -38,6 +38,10 @@
             android:name="com.fau.tunetrends.AddSong"
             android:label="@string/title_activity_add_song" >
         </activity>
+        <activity
+            android:name="com.fau.tunetrends.UpdateRating"
+            android:label="@string/title_activity_update_rating" >
+        </activity>
     </application>
 
 </manifest>

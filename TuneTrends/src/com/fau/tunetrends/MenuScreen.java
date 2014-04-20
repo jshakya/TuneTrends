@@ -74,10 +74,11 @@ public class MenuScreen extends Activity {
 			    //Toast.makeText(getApplicationContext(),
 				//number, Toast.LENGTH_SHORT).show();
 			    
-			    String artist = String.valueOf(UserGroup.getTrackList().getTrackList().get((int) id).getRatingValue());
+			    Intent i = new Intent (getApplicationContext(), UpdateRating.class);
+			    i.putExtra("position", id);
+			    startActivity(i);
+			    finish();
 			    
-			    Toast.makeText(getApplicationContext(),
-			    		artist, Toast.LENGTH_SHORT).show();
 			}
 		});
         

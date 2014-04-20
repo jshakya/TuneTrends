@@ -19,5 +19,6 @@
     <string name="songTitleTxt">Song Title</string>
     <string name="artistNameTxt">Artist Name</string>
     <string name="addSongTxt">Add Song</string>
+    <string name="title_activity_update_rating">UpdateRating</string>
 
 </resources>
