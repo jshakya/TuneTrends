@@ -36,6 +36,16 @@ public class TrackList{
 	}
 	
 	/**
+	 * This adds the newly created Track to the List 
+	 * @param trackName Name of the Track
+	 * @param artistName Name of the Artist
+	 */
+	public void addSong(String trackName, String artistName, int ratingValue){
+		Track track = new Track(trackName, artistName, ratingValue);
+		this.trackList.add(track);
+	}
+	
+	/**
 	 * This returns the TrackList of the usergroup if needed
 	 * NO IMPLEMENTATIONS YET		
 	 * @return

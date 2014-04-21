@@ -10,54 +10,63 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class UpdateRating extends Activity {
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
-		
-		
+
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_update_rating);
-		final Button upBtn= (Button) findViewById(R.id.rateUpBtn);
+		final Button upBtn = (Button) findViewById(R.id.rateUpBtn);
 		final Button downBtn = (Button) findViewById(R.id.rateDownBtn);
 		final TextView ratingTxt = (TextView) findViewById(R.id.ratingValueTxt);
-		
+		final TextView titleTxt = (TextView) findViewById(R.id.titlePlaceholder);
+		final TextView artistTxt = (TextView) findViewById(R.id.artistPlaceholder);
+
 		int position = 0;
-		
+
 		final Bundle extras = getIntent().getExtras();
-		if (extras != null)
-		{
+		if (extras != null) {
 			position = (int) extras.getLong("position");
-			Toast.makeText(getApplicationContext(),
-					String.valueOf(position), Toast.LENGTH_SHORT).show();
-		}
-		else
-		{
-			Toast.makeText(getApplicationContext(),
-					"error", Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), String.valueOf(position),
+					Toast.LENGTH_SHORT).show();
+		} else {
+			Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT)
+					.show();
 		}
 		final int pos = position;
-		//Setting the textView
-		ratingTxt.setText(String.valueOf(UserGroup.getTrackList().getTrackList().get(pos).getRatingValue()));
+		// Setting the textView
+		titleTxt.setText("Title:"
+				+ UserGroup.getTrackList().getTrackList().get(pos).getTitle());
+		artistTxt.setText("Artist:"
+				+ UserGroup.getTrackList().getTrackList().get(pos).getArtist());
+
+		ratingTxt.setText("RATINGS:"
+				+ String.valueOf(UserGroup.getTrackList().getTrackList()
+						.get(pos).getRatingValue()));
 		upBtn.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				UserGroup.getTrackList().getTrackList().get(pos).upRateValue();
-				ratingTxt.setText(String.valueOf(UserGroup.getTrackList().getTrackList().get(pos).getRatingValue()));
+				ratingTxt.setText("RATINGS:"
+						+ String.valueOf(UserGroup.getTrackList()
+								.getTrackList().get(pos).getRatingValue()));
 			}
-		
+
 		});
 		downBtn.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				UserGroup.getTrackList().getTrackList().get(pos).downRateValue();
-				ratingTxt.setText(String.valueOf(UserGroup.getTrackList().getTrackList().get(pos).getRatingValue()));
+				UserGroup.getTrackList().getTrackList().get(pos)
+						.downRateValue();
+				ratingTxt.setText("RATINGS:"
+						+ String.valueOf(UserGroup.getTrackList()
+								.getTrackList().get(pos).getRatingValue()));
 			}
-		
+
 		});
-		
+
 	}
 
 	@Override

@@ -22,26 +22,25 @@ public class AddSong extends Activity {
 		final Button addSong = (Button) findViewById(R.id.addSong);
 		final EditText title = (EditText) findViewById(R.id.title);
 		final EditText artist = (EditText) findViewById(R.id.artist);
-		
+
 		addSong.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				if (title.getText().length() != 0 && artist.getText().length() != 0)
-				{
-					Track track = new Track (title.getText().toString(), artist.getText().toString());
+				if (title.getText().length() != 0
+						&& artist.getText().length() != 0) {
+					Track track = new Track(title.getText().toString(), artist
+							.getText().toString());
 					UserGroup.getTrackList().addSong(track);
-				
-					Intent i = new Intent(getApplicationContext(), MenuScreen.class);
+
+					Intent i = new Intent(getApplicationContext(),
+							MenuScreen.class);
 					startActivity(i);
 					finish();
-				}
-				else
-				{
-					Toast.makeText(getApplicationContext(),
-	                	      "Fields empty", Toast.LENGTH_LONG)
-	                	      .show();
+				} else {
+					Toast.makeText(getApplicationContext(), "Fields empty",
+							Toast.LENGTH_LONG).show();
 				}
 
 			}

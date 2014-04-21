@@ -14,7 +14,11 @@ public class UserGroup {
 		if (tracklist == null)
 		{
 			tracklist = new TrackList();
-			tracklist.addSong("Song 1", "Artist 1");
+			/*Remove after Successful Serialization*/
+			tracklist.addSong("Song2", "Artist 2", 2);
+			tracklist.addSong("Song5", "Artist 5", 5);
+			tracklist.addSong("Song3", "Artist 3", 3);
+			/*Sample Initialization*/
 		}
 		return tracklist;
 	}

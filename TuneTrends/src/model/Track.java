@@ -31,6 +31,17 @@ public class Track {
 	}
 	
 	/**
+	 * JBN -- Use this constructor to create a new Track. Rating Value will be set to value provided
+	 * @param title the name of the song
+	 * @param artist the name of the artist
+	 */
+	public Track(String title, String artist, int ratingValue)
+	{
+		setTitle(title);
+		setArtist(artist);
+		setRatingValue(ratingValue);
+	}
+	/**
 	 * MDR -- Accessor for the song title
 	 * @return title
 	 */

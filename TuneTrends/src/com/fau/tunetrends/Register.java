@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class Register extends Activity {
-	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -18,12 +17,12 @@ public class Register extends Activity {
 
 		Button registerBtn = (Button) findViewById(R.id.registerUserBtn);
 		final EditText fName = (EditText) findViewById(R.id.fName);
-		final EditText lName =(EditText) findViewById(R.id.lName);
+		final EditText lName = (EditText) findViewById(R.id.lName);
 		final EditText email = (EditText) findViewById(R.id.email);
 		final EditText password = (EditText) findViewById(R.id.password);
-		
+
 		registerBtn.setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -31,15 +30,16 @@ public class Register extends Activity {
 				String lNameString = lName.getText().toString();
 				String emailString = email.getText().toString();
 				String passwordString = password.getText().toString();
-				
-				User registeredUser = new User(fNameString, lNameString, emailString , passwordString);
-				//Get values from fields
-				
-				//Create new User
-				
+
+				User registeredUser = new User(fNameString, lNameString,
+						emailString, passwordString);
+				// Get values from fields
+
+				// Create new User
+
 			}
 		});
-		
+
 	}
 
 	@Override
