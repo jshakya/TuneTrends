@@ -6,8 +6,13 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
+
+	TextView emailInput;
+	TextView passwordInput;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -16,16 +21,22 @@ public class MainActivity extends Activity {
 
 		Button submitBtn = (Button) findViewById(R.id.submitBtn);
 		Button registerBtn = (Button) findViewById(R.id.registerBtn);
+		// Validating Password
+		emailInput = (TextView) findViewById(R.id.emailInput);
+		passwordInput = (TextView) findViewById(R.id.passwordInput);
+		// final Boolean flag;
 
 		submitBtn.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
-				// TODO Auto-generated method stub
-
-				Intent i = new Intent(getApplicationContext(), MenuScreen.class);
-				startActivity(i);
-				// finish();
+				// JBN Remove if part to remove authorization
+				if (checkCredentials()) {
+					Intent i = new Intent(getApplicationContext(),
+							MenuScreen.class);
+					startActivity(i);
+					// finish();
+				}
 			}
 		});
 
@@ -49,4 +60,17 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+	private Boolean checkCredentials() {
+		if (emailInput.getText().toString().equals("admin")
+				&& passwordInput.getText().toString().equals("pass"))
+			return true;
+		else
+			Toast.makeText(
+					getApplicationContext(),
+					"Access Denied\n" + emailInput.getText().toString()
+							+ passwordInput.getText().toString(),
+					Toast.LENGTH_LONG).show();
+		return false;
+
+	}
 }
