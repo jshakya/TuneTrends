@@ -1,11 +1,18 @@
 package com.fau.tunetrends;
 
+//import java.io.File;
+//import java.io.FileOutputStream;
+//import java.io.IOException;
+//import java.io.ObjectOutputStream;
+//import java.security.acl.LastOwnerException;
+
 import model.Track;
-import model.TrackList;
-import model.User;
-import model.UserGroup;
+//import model.TrackList;
+//import model.User;
+//import model.UserGroup;
 import android.os.Bundle;
 import android.app.Activity;
+//import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -22,7 +29,7 @@ public class AddSong extends Activity {
 		final Button addSong = (Button) findViewById(R.id.addSong);
 		final EditText title = (EditText) findViewById(R.id.title);
 		final EditText artist = (EditText) findViewById(R.id.artist);
-
+		
 		addSong.setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -30,9 +37,10 @@ public class AddSong extends Activity {
 				// TODO Auto-generated method stub
 				if (title.getText().length() != 0
 						&& artist.getText().length() != 0) {
-					Track track = new Track(title.getText().toString(), artist
-							.getText().toString());
-					UserGroup.getTrackList().addSong(track);
+//					Track track = new Track(title.getText().toString(), artist
+//							.getText().toString());
+					MenuScreen.curUser.getTrackList().addSong(new Track(title.getText().toString(), artist
+							.getText().toString()) );
 
 					Intent i = new Intent(getApplicationContext(),
 							MenuScreen.class);
@@ -42,7 +50,7 @@ public class AddSong extends Activity {
 					Toast.makeText(getApplicationContext(), "Fields empty",
 							Toast.LENGTH_LONG).show();
 				}
-
+                onDestroy();
 			}
 		});
 	}
@@ -53,5 +61,6 @@ public class AddSong extends Activity {
 		getMenuInflater().inflate(R.menu.add_song, menu);
 		return true;
 	}
+
 
 }

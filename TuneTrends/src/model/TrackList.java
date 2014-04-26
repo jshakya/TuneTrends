@@ -9,11 +9,17 @@ import java.util.Comparator;
  * @author jebinshakya
  *
  */
-public class TrackList{
+public class TrackList extends ArrayList<Track> implements java.io.Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4580108724538741771L;
+
+
 	public TrackList ()
 	{
-		trackList = new ArrayList<Track>();
+		this.clear();
 	}
 	
 	/**
@@ -22,7 +28,7 @@ public class TrackList{
 	 */
 	public void addSong(Track track)
 	{
-		this.trackList.add(track);
+		this.add(track);
 	}
 	
 	/**
@@ -31,8 +37,7 @@ public class TrackList{
 	 * @param artistName Name of the Artist
 	 */
 	public void addSong(String trackName, String artistName){
-		Track track = new Track(trackName, artistName);
-		this.trackList.add(track);
+		this.add(new Track(trackName, artistName));
 	}
 	
 	/**
@@ -41,8 +46,7 @@ public class TrackList{
 	 * @param artistName Name of the Artist
 	 */
 	public void addSong(String trackName, String artistName, int ratingValue){
-		Track track = new Track(trackName, artistName, ratingValue);
-		this.trackList.add(track);
+		this.add(new Track(trackName, artistName, ratingValue));
 	}
 	
 	/**
@@ -50,22 +54,28 @@ public class TrackList{
 	 * NO IMPLEMENTATIONS YET		
 	 * @return
 	 */
-	public ArrayList<Track> getTrackList() {
-		return this.trackList;
+	public TrackList getTrackList() {
+		return this;
 	}
 	
+	public void setTrackList(TrackList temp){
+		this.clear();
+		for (Track track : temp) {
+			this.add(track);
+		}
+	}
 	/**
 	 * This removes the top song of the list
 	 */
 	public void removeTopSong(){
-		this.trackList.remove(0);
+		this.remove(0);
 	}
 	
 	/**
 	 * This removes the bottom song of the list
 	 */
 	public void removeBottomSong(){
-		this.trackList.remove(this.trackList.size() -1);
+		this.remove(this.size() -1);
 	}
 	
 	/**
@@ -73,7 +83,7 @@ public class TrackList{
 	 * @return
 	 */
 	public int countSongs(){
-		return this.trackList.size();
+		return this.size();
 	}
 	
 	/**
@@ -82,7 +92,7 @@ public class TrackList{
 	 * @return
 	 */
 	public void sortSongs() {
-		Collections.sort(trackList, new trackComp());
+		Collections.sort(this, new trackComp());
 	}
 	
 
@@ -90,7 +100,7 @@ public class TrackList{
 //		TrackList = trackList;
 //	}
 	
-	private ArrayList<Track> trackList;
+//	private ArrayList<Track> trackList;
 }
 
 /**

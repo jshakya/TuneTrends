@@ -1,26 +1,32 @@
 package model;
 
+//import java.io.FileInputStream;
+//import java.io.FileOutputStream;
+//import java.io.IOException;
+//import java.io.ObjectInputStream;
+//import java.io.ObjectOutputStream;
 import java.util.ArrayList;
+
+//import android.content.Context;
 
 public class UserGroup {
 
 	public UserGroup() {
-		// TODO Auto-generated constructor stub
-		UserGroup.tracklist = new TrackList();
+		this.trackList = new TrackList();
 	}
 	
-	public static TrackList getTrackList()
+	public TrackList getTrackList()
 	{
-		if (tracklist == null)
+		if (this.trackList == null)
 		{
-			tracklist = new TrackList();
+			trackList = new TrackList();
 			/*Remove after Successful Serialization*/
-			tracklist.addSong("Song2", "Artist 2", 2);
-			tracklist.addSong("Song5", "Artist 5", 5);
-			tracklist.addSong("Song3", "Artist 3", 3);
+			trackList.addSong("Song2", "Artist 2", 2);
+			trackList.addSong("Song5", "Artist 5", 5);
+			trackList.addSong("Song3", "Artist 3", 3);
 			/*Sample Initialization*/
 		}
-		return tracklist;
+		return trackList;
 	}
 	
 	public int getGroupCode(){
@@ -37,7 +43,8 @@ public class UserGroup {
 		this.listUsers = listUsers;
 	}
 	
-	private static TrackList tracklist;
+	
+	private TrackList trackList;
 	private int groupCode;
 	private ArrayList <User> listUsers;
 }

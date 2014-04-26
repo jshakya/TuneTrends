@@ -8,19 +8,26 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity" >
+    tools:context=".MainActivity"
+    android:clickable="true"
+    android:background="@drawable/backtransbg">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:weightSum="1">
 
         <TextView
             android:id="@+id/ratingValueTxt"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/appTitleTxt"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:layout_height="38dp"
+            android:text="@string/LogIn"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ff1f2c"
+            android:background="@android:color/holo_green_light"
+            android:layout_gravity="center_horizontal"
+            android:autoText="false"
+            android:gravity="center_vertical|center_horizontal" />
     </LinearLayout>
 
     <LinearLayout
@@ -39,28 +46,38 @@
             <requestFocus />
         </EditText>
 
-        <EditText
-            android:id="@+id/passwordInput"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
-            android:hint="@string/passwordHint"
-            android:inputType="textPassword" />
-
     </LinearLayout>
 
-    <Button
-        android:id="@+id/submitBtn"
+    <EditText
+        android:id="@+id/passwordInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/submitBtnTxt" />
+        android:ems="10"
+        android:hint="@string/passwordHint"
+        android:inputType="textPassword" />
 
-    <Button
-        android:id="@+id/registerBtn"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/registerBtnTxt" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="168dp"
+            android:layout_height="wrap_content"
+            android:text="@string/submitBtnTxt"
+            android:background="@android:drawable/bottom_bar"
+            android:clickable="false"
+            android:layout_marginRight="5dp" />
+
+        <Button
+            android:id="@+id/registerBtn"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/registerBtnTxt"
+            android:background="@android:drawable/bottom_bar"
+            android:layout_marginLeft="5dp" />
+    </LinearLayout>
 
 </LinearLayout>

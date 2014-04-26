@@ -31,8 +31,7 @@ public class Register extends Activity {
 				String emailString = email.getText().toString();
 				String passwordString = password.getText().toString();
 
-				User registeredUser = new User(fNameString, lNameString,
-						emailString, passwordString);
+				User registeredUser = new User(fNameString, lNameString, emailString, passwordString);
 				// Get values from fields
 
 				// Create new User

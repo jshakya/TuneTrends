@@ -1,8 +1,14 @@
 package com.fau.tunetrends;
 
-import model.UserGroup;
+//import java.io.File;
+//import java.io.FileOutputStream;
+//import java.io.IOException;
+//import java.io.ObjectOutputStream;
+
+//import model.UserGroup;
 import android.os.Bundle;
 import android.app.Activity;
+//import android.content.Context;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -36,20 +42,20 @@ public class UpdateRating extends Activity {
 		final int pos = position;
 		// Setting the textView
 		titleTxt.setText("Title:"
-				+ UserGroup.getTrackList().getTrackList().get(pos).getTitle());
+				+ MenuScreen.curUser.getTrackList().get(pos).getTitle());
 		artistTxt.setText("Artist:"
-				+ UserGroup.getTrackList().getTrackList().get(pos).getArtist());
+				+ MenuScreen.curUser.getTrackList().get(pos).getArtist());
 
 		ratingTxt.setText("RATINGS:"
-				+ String.valueOf(UserGroup.getTrackList().getTrackList()
+				+ String.valueOf(MenuScreen.curUser.getTrackList().getTrackList()
 						.get(pos).getRatingValue()));
 		upBtn.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
-				UserGroup.getTrackList().getTrackList().get(pos).upRateValue();
+				MenuScreen.curUser.getTrackList().get(pos).upRateValue();
 				ratingTxt.setText("RATINGS:"
-						+ String.valueOf(UserGroup.getTrackList()
+						+ String.valueOf(MenuScreen.curUser.getTrackList()
 								.getTrackList().get(pos).getRatingValue()));
 			}
 
@@ -58,10 +64,10 @@ public class UpdateRating extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				UserGroup.getTrackList().getTrackList().get(pos)
+				MenuScreen.curUser.getTrackList().get(pos)
 						.downRateValue();
 				ratingTxt.setText("RATINGS:"
-						+ String.valueOf(UserGroup.getTrackList()
+						+ String.valueOf(MenuScreen.curUser.getTrackList()
 								.getTrackList().get(pos).getRatingValue()));
 			}
 
@@ -75,5 +81,22 @@ public class UpdateRating extends Activity {
 		getMenuInflater().inflate(R.menu.update_rating, menu);
 		return true;
 	}
+//	@Override
+//	protected void onStop() {
+//		super.onStop();
+//		Toast.makeText(getApplicationContext(), "Saving App", Toast.LENGTH_LONG)
+//				.show();
+//		String FILENAME = "data.dat";
+//
+//		try {
+//			File file = new File(getFilesDir(), FILENAME);
+//			FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+//			ObjectOutputStream out = new ObjectOutputStream(fos);
+//			out.writeObject(MenuScreen.curUser.getTrackList());
+//			fos.close();
+//		} catch (IOException e) {
+//
+//		}
+//	}
 
 }

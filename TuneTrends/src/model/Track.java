@@ -1,17 +1,22 @@
 package model;
 
+import java.io.Serializable;
+
 /**
  * Class for songs/tracks. Title/Artists should not change once created.
  * @author Mike
  *
  */
-public class Track {
+public class Track implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6205619219993159193L;
 	/**
 	 * MDR -- Auto generated constructor. I just set the title/artist to blank strings here. Should consider removing.
 	 */
 	public Track() {
-		// TODO Auto-generated constructor stub
 		setTitle(new String());
 		setArtist(new String());
 		//this.ratingValue = 0;
