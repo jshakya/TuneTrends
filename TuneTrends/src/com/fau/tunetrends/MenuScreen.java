@@ -24,40 +24,37 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import model.TrackList;
+import model.User;
 import model.UserGroup;
+
 
 /**
  * This is the screen that displays the songs in a list view. Users can click on the Menu button on their phone to access the add song screen.
  * Click on a row of the table to view the rating and rate the song up or down.
  * Uses Strategy pattern by inheriting from the Activity class
- * @author Mike
+ * @author Mike, Jebin
  *
  */
 public class MenuScreen extends Activity {
 
     List<Map<String, String>> song;
-    static UserGroup curUserGroup;// = new UserGroup();
+    //UserGroup curUserGroup;// = new UserGroup();
     String FILENAME = "data.dat";
     //TrackList trackList = curUserGroup.getTrackList();
+    User signedUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        signedUser = (User) getIntent().getSerializableExtra("user");
         setContentView(R.layout.activity_menu_screen);
-        // List <Track> trackList = new ArrayList<Track>();
 
-        if (curUserGroup == null) {
-            curUserGroup = new UserGroup();
-            loadObject();
-        }
-        //loadObject();
-
-        curUserGroup.getTrackList().sortSongs();
+        MainActivity.curUserGroup.getTrackList().sortSongs();
 
         changeListView();
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -72,7 +69,7 @@ public class MenuScreen extends Activity {
         super.onResume();
         setContentView(R.layout.activity_menu_screen);
         // List <Track> trackList = new ArrayList<Track>();
-        curUserGroup.getTrackList().sortSongs();
+        MainActivity.curUserGroup.getTrackList().sortSongs();
 
         changeListView();
 
@@ -85,12 +82,12 @@ public class MenuScreen extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1: //Creates a demo list of songs
-                curUserGroup.getTrackList().clear();
-                curUserGroup.getTrackList().addSong("Happy", "Pharell Williams", 10);
-                curUserGroup.getTrackList().addSong("Royals", "Lorde", 8);
-                curUserGroup.getTrackList().addSong("Selfie", "Chain Smokers", 6);
-                curUserGroup.getTrackList().addSong("All of me", "John Legend", 4);
-                curUserGroup.getTrackList().addSong("Dark Horse ", "Katy Perry", 2);
+                MainActivity.curUserGroup.getTrackList().clear();
+                MainActivity.curUserGroup.getTrackList().addSong("Happy", "Pharell Williams", 10);
+                MainActivity.curUserGroup.getTrackList().addSong("Royals", "Lorde", 8);
+                MainActivity.curUserGroup.getTrackList().addSong("Selfie", "Chain Smokers", 6);
+                MainActivity.curUserGroup.getTrackList().addSong("All of me", "John Legend", 4);
+                MainActivity.curUserGroup.getTrackList().addSong("Dark Horse ", "Katy Perry", 2);
                 changeListView();
                 break;
             case R.id.item2: //Moves to the Add Song class
@@ -98,11 +95,15 @@ public class MenuScreen extends Activity {
                 this.startActivity(intent);
                 break;
             case R.id.item3: //Removes the top song
-                curUserGroup.getTrackList().removeTopSong();
+                MainActivity.curUserGroup.getTrackList().removeTopSong();
                 changeListView();
                 break;
             case R.id.item4: //Removes the bottom song
-                curUserGroup.getTrackList().removeBottomSong();
+                MainActivity.curUserGroup.getTrackList().removeBottomSong();
+                changeListView();
+                break;
+            case R.id.item5:
+                Toast.makeText(getApplicationContext(), "User : " + signedUser.getEmail(), Toast.LENGTH_LONG).show();
                 changeListView();
                 break;
             default:
@@ -124,10 +125,10 @@ public class MenuScreen extends Activity {
      */
     public void changeListView() {
         song = new ArrayList<Map<String, String>>();
-        for (int i = 0; i < curUserGroup.getTrackList().countSongs(); i++) {
+        for (int i = 0; i < MainActivity.curUserGroup.getTrackList().countSongs(); i++) {
             Map<String, String> datum = new HashMap<String, String>(2);
-            datum.put("title", curUserGroup.getTrackList().get(i).getTitle());
-            datum.put("artist", curUserGroup.getTrackList().get(i).getArtist());
+            datum.put("title", MainActivity.curUserGroup.getTrackList().get(i).getTitle());
+            datum.put("artist", MainActivity.curUserGroup.getTrackList().get(i).getArtist());
             song.add(datum);
         }
         /*
@@ -173,7 +174,6 @@ public class MenuScreen extends Activity {
         super.onStop();
         Toast.makeText(getApplicationContext(), "Saving App", Toast.LENGTH_LONG)
                 .show();
-
         saveObject();
     }
 
@@ -198,7 +198,7 @@ public class MenuScreen extends Activity {
             FileOutputStream fos = null;
             fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
             ObjectOutputStream out = new ObjectOutputStream(fos);
-            out.writeObject(curUserGroup.getTrackList());
+            out.writeObject(MainActivity.curUserGroup);
             fos.close();
         } catch (IOException e) {
 
@@ -215,7 +215,7 @@ public class MenuScreen extends Activity {
 //			File file = new File(getFilesDir(), FILENAME);
             FileInputStream fis = new FileInputStream(new File(getFilesDir(), FILENAME));
             ObjectInputStream in = new ObjectInputStream(fis);
-            curUserGroup.getTrackList().setTrackList((TrackList) in.readObject());
+            MainActivity.curUserGroup.setUserGroup((UserGroup) in.readObject());
             fis.close();
         } catch (IOException e) {
 

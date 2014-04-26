@@ -6,23 +6,26 @@ package com.fau.tunetrends;
 //import java.io.ObjectOutputStream;
 //import java.security.acl.LastOwnerException;
 
-import model.Track;
-//import model.TrackList;
-//import model.User;
-//import model.UserGroup;
-import android.os.Bundle;
 import android.app.Activity;
-//import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import model.Track;
+
+//import model.TrackList;
+//import model.User;
+//import model.UserGroup;
+//import android.content.Context;
+
 /**
  * Activity to allow the user to add their own song to the list of current songs. Added songs will be displayed in the MenuScreen activity
- * @author Mike
  *
+ * @author Mike, Jebin
  */
 public class AddSong extends Activity {
 
@@ -30,7 +33,7 @@ public class AddSong extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_song);
-        
+
         //UI elements
         final Button addSong = (Button) findViewById(R.id.addSong);
         final EditText title = (EditText) findViewById(R.id.title);
@@ -40,12 +43,12 @@ public class AddSong extends Activity {
 
             @Override
             public void onClick(View v) {
-            	//Checking if fields are empty first
+                //Checking if fields are empty first
                 if (title.getText().length() != 0)
                     if (artist.getText().length() != 0) {
 //					Track track = new Track(title.getText().toString(), artist
 //							.getText().toString());
-                        MenuScreen.curUserGroup.getTrackList().addSong(new Track(title.getText().toString(), artist
+                        MainActivity.curUserGroup.getTrackList().addSong(new Track(title.getText().toString(), artist
                                 .getText().toString()));
 
                         Intent i = new Intent(getApplicationContext(),

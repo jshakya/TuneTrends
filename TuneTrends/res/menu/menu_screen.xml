@@ -1,12 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <item
-        android:id="@+id/rateDownBtn"
-        android:orderInCategory="100"
-        android:showAsAction="never"
-        android:title="@string/action_settings" android:enabled="true" android:visible="true"/>
+
     <item android:id="@+id/item1" android:title="Initialize" android:enabled="true" android:visible="true"></item>
     <item android:id="@+id/item2" android:enabled="true" android:title="Add Song" android:visible="true"></item>
     <item android:id="@+id/item3" android:title="Remove Top" android:enabled="true" android:visible="true"></item>
     <item android:id="@+id/item4" android:title="Remove Bottom" android:enabled="true" android:visible="true"></item>
+    <item
+        android:id="@+id/item5"
+        android:title="Show User Detail"
+        android:enabled="true"
+        android:visible="true"></item>
 </menu>

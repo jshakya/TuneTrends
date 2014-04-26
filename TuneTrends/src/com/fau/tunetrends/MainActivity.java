@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import model.TrackList;
+import model.User;
 import model.UserGroup;
 
 public class MainActivity extends Activity {
@@ -28,12 +28,18 @@ public class MainActivity extends Activity {
     static UserGroup curUserGroup;// = new UserGroup();
     String FILENAME = "data.dat";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //this.loadFile();
+        if (curUserGroup == null) {
+            curUserGroup = new UserGroup();
+            this.loadFile();
+        }
+        //constant saver
+        this.saveFile();
 
         Button submitBtn = (Button) findViewById(R.id.submitBtn);
         Button registerBtn = (Button) findViewById(R.id.registerBtn);
@@ -47,10 +53,12 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View arg0) {
                 // JBN Remove if part to remove authorization
-                if (checkCredentials()) {
+                if (isUserInDB() != null) {
                     Intent i = new Intent(getApplicationContext(),
                             MenuScreen.class);
+                    i.putExtra("user", isUserInDB());
                     startActivity(i);
+
                     // finish();
                 }
             }
@@ -75,27 +83,44 @@ public class MainActivity extends Activity {
         return true;
     }
 
-    private Boolean checkCredentials() {
+    protected void onDestroy() {
+        super.onDestroy();
+        saveFile();
+    }
+
+    protected void onStop() {
+        super.onStop();
+        saveFile();
+    }
+
+    private User isUserInDB() {
+        for (User temp : MainActivity.curUserGroup) {
+            if (emailInput.getText().toString().equals(temp.getEmail()) && passwordInput.getText().toString().equals(temp.getPassword())) {
+                return temp;
+            }
+        }
+
         if (emailInput.getText().toString().equals("admin")
                 && passwordInput.getText().toString().equals("pass"))
-            return true;
+            return new User("FirstAdmin", "LastAdmin", "admin", "pass");
         else
             Toast.makeText(
                     getApplicationContext(),
-                    "Access Denied\n" + emailInput.getText().toString()
-                            + passwordInput.getText().toString(),
+                    "Access Denied for user:\n" + emailInput.getText().toString(),
                     Toast.LENGTH_LONG).show();
-        return false;
+        return null;
     }
+
 
     public void saveFile() {
         try {
             FileOutputStream fos = null;
             fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
             ObjectOutputStream out = new ObjectOutputStream(fos);
-            out.writeObject(curUserGroup.getTrackList());
+            out.writeObject(curUserGroup);
             fos.close();
         } catch (IOException e) {
+            e.printStackTrace();
 
         }
     }
@@ -107,9 +132,12 @@ public class MainActivity extends Activity {
 //			File file = new File(getFilesDir(), FILENAME);
             FileInputStream fis = new FileInputStream(new File(getFilesDir(), FILENAME));
             ObjectInputStream in = new ObjectInputStream(fis);
-            curUserGroup.getTrackList().setTrackList((TrackList) in.readObject());
+            curUserGroup.setUserGroup((UserGroup) in.readObject());
             fis.close();
         } catch (IOException e) {
+            //to check errors on serialization
+            e.printStackTrace();
+            saveFile();
 
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
