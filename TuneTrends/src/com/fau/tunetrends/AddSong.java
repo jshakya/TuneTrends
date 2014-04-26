@@ -19,13 +19,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
+/**
+ * Activity to allow the user to add their own song to the list of current songs. Added songs will be displayed in the MenuScreen activity
+ * @author Mike
+ *
+ */
 public class AddSong extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_song);
+        
+        //UI elements
         final Button addSong = (Button) findViewById(R.id.addSong);
         final EditText title = (EditText) findViewById(R.id.title);
         final EditText artist = (EditText) findViewById(R.id.artist);
@@ -34,7 +40,7 @@ public class AddSong extends Activity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+            	//Checking if fields are empty first
                 if (title.getText().length() != 0)
                     if (artist.getText().length() != 0) {
 //					Track track = new Track(title.getText().toString(), artist
