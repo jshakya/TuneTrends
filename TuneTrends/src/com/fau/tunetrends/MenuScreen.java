@@ -30,9 +30,9 @@ import model.UserGroup;
 public class MenuScreen extends Activity {
 
     List<Map<String, String>> song;
-    static UserGroup curUser;// = new UserGroup();
+    static UserGroup curUserGroup;// = new UserGroup();
     String FILENAME = "data.dat";
-    //TrackList trackList = curUser.getTrackList();
+    //TrackList trackList = curUserGroup.getTrackList();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,13 +41,13 @@ public class MenuScreen extends Activity {
         setContentView(R.layout.activity_menu_screen);
         // List <Track> trackList = new ArrayList<Track>();
 
-        if (curUser == null) {
-            curUser = new UserGroup();
+        if (curUserGroup == null) {
+            curUserGroup = new UserGroup();
             loadObject();
         }
         //loadObject();
 
-        curUser.getTrackList().sortSongs();
+        curUserGroup.getTrackList().sortSongs();
 
         changeListView();
     }
@@ -65,7 +65,7 @@ public class MenuScreen extends Activity {
         super.onResume();
         setContentView(R.layout.activity_menu_screen);
         // List <Track> trackList = new ArrayList<Track>();
-        curUser.getTrackList().sortSongs();
+        curUserGroup.getTrackList().sortSongs();
 
         changeListView();
 
@@ -75,12 +75,12 @@ public class MenuScreen extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.item1:
-                curUser.getTrackList().clear();
-                curUser.getTrackList().addSong("Happy", "Pharell Williams", 10);
-                curUser.getTrackList().addSong("Royals", "Lorde", 8);
-                curUser.getTrackList().addSong("Selfie", "Chain Smokers", 6);
-                curUser.getTrackList().addSong("All of me", "John Legend", 4);
-                curUser.getTrackList().addSong("Dark Horse ", "Katy Perry", 2);
+                curUserGroup.getTrackList().clear();
+                curUserGroup.getTrackList().addSong("Happy", "Pharell Williams", 10);
+                curUserGroup.getTrackList().addSong("Royals", "Lorde", 8);
+                curUserGroup.getTrackList().addSong("Selfie", "Chain Smokers", 6);
+                curUserGroup.getTrackList().addSong("All of me", "John Legend", 4);
+                curUserGroup.getTrackList().addSong("Dark Horse ", "Katy Perry", 2);
                 changeListView();
                 break;
             case R.id.item2:
@@ -88,11 +88,11 @@ public class MenuScreen extends Activity {
                 this.startActivity(intent);
                 break;
             case R.id.item3:
-                curUser.getTrackList().removeTopSong();
+                curUserGroup.getTrackList().removeTopSong();
                 changeListView();
                 break;
             case R.id.item4:
-                curUser.getTrackList().removeBottomSong();
+                curUserGroup.getTrackList().removeBottomSong();
                 changeListView();
                 break;
             default:
@@ -110,10 +110,10 @@ public class MenuScreen extends Activity {
 
     public void changeListView() {
         song = new ArrayList<Map<String, String>>();
-        for (int i = 0; i < curUser.getTrackList().countSongs(); i++) {
+        for (int i = 0; i < curUserGroup.getTrackList().countSongs(); i++) {
             Map<String, String> datum = new HashMap<String, String>(2);
-            datum.put("title", curUser.getTrackList().get(i).getTitle());
-            datum.put("artist", curUser.getTrackList().get(i).getArtist());
+            datum.put("title", curUserGroup.getTrackList().get(i).getTitle());
+            datum.put("artist", curUserGroup.getTrackList().get(i).getArtist());
             song.add(datum);
         }
         /*
@@ -175,7 +175,7 @@ public class MenuScreen extends Activity {
             FileOutputStream fos = null;
             fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
             ObjectOutputStream out = new ObjectOutputStream(fos);
-            out.writeObject(curUser.getTrackList());
+            out.writeObject(curUserGroup.getTrackList());
             fos.close();
         } catch (IOException e) {
 
@@ -189,7 +189,7 @@ public class MenuScreen extends Activity {
 //			File file = new File(getFilesDir(), FILENAME);
             FileInputStream fis = new FileInputStream(new File(getFilesDir(), FILENAME));
             ObjectInputStream in = new ObjectInputStream(fis);
-            curUser.getTrackList().setTrackList((TrackList) in.readObject());
+            curUserGroup.getTrackList().setTrackList((TrackList) in.readObject());
             fis.close();
         } catch (IOException e) {
 

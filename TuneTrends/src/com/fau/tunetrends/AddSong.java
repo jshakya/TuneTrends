@@ -39,7 +39,7 @@ public class AddSong extends Activity {
                     if (artist.getText().length() != 0) {
 //					Track track = new Track(title.getText().toString(), artist
 //							.getText().toString());
-                        MenuScreen.curUser.getTrackList().addSong(new Track(title.getText().toString(), artist
+                        MenuScreen.curUserGroup.getTrackList().addSong(new Track(title.getText().toString(), artist
                                 .getText().toString()));
 
                         Intent i = new Intent(getApplicationContext(),
