@@ -7,14 +7,15 @@ package com.fau.tunetrends;
 
 //import model.UserGroup;
 
-import android.os.Bundle;
 import android.app.Activity;
-//import android.content.Context;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+//import android.content.Context;
 
 public class UpdateRating extends Activity {
 
@@ -42,12 +43,12 @@ public class UpdateRating extends Activity {
         }
         final int pos = position;
         // Setting the textView
-        titleTxt.setText("Title:"
+        titleTxt.setText("Title : "
                 + MenuScreen.curUserGroup.getTrackList().get(pos).getTitle());
-        artistTxt.setText("Artist:"
+        artistTxt.setText("Artist : "
                 + MenuScreen.curUserGroup.getTrackList().get(pos).getArtist());
 
-        ratingTxt.setText("RATINGS:"
+        ratingTxt.setText("RATINGS : "
                 + String.valueOf(MenuScreen.curUserGroup.getTrackList().getTrackList()
                 .get(pos).getRatingValue()));
         upBtn.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +56,7 @@ public class UpdateRating extends Activity {
             @Override
             public void onClick(View v) {
                 MenuScreen.curUserGroup.getTrackList().get(pos).upRateValue();
-                ratingTxt.setText("RATINGS:"
+                ratingTxt.setText("RATINGS : "
                         + String.valueOf(MenuScreen.curUserGroup.getTrackList()
                         .getTrackList().get(pos).getRatingValue()));
             }
@@ -67,7 +68,7 @@ public class UpdateRating extends Activity {
             public void onClick(View v) {
                 MenuScreen.curUserGroup.getTrackList().get(pos)
                         .downRateValue();
-                ratingTxt.setText("RATINGS:"
+                ratingTxt.setText("RATINGS : "
                         + String.valueOf(MenuScreen.curUserGroup.getTrackList()
                         .getTrackList().get(pos).getRatingValue()));
             }
@@ -82,22 +83,6 @@ public class UpdateRating extends Activity {
         getMenuInflater().inflate(R.menu.update_rating, menu);
         return true;
     }
-//	@Override
-//	protected void onStop() {
-//		super.onStop();
-//		Toast.makeText(getApplicationContext(), "Saving App", Toast.LENGTH_LONG)
-//				.show();
-//		String FILENAME = "data.dat";
-//
-//		try {
-//			File file = new File(getFilesDir(), FILENAME);
-//			FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
-//			ObjectOutputStream out = new ObjectOutputStream(fos);
-//			out.writeObject(MenuScreen.curUserGroup.getTrackList());
-//			fos.close();
-//		} catch (IOException e) {
-//
-//		}
-//	}
+
 
 }

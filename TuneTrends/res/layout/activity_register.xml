@@ -8,7 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".Register" >
+    tools:context=".Register"
+    android:background="@drawable/back">
 
     <EditText
         android:id="@+id/fName"
@@ -16,7 +17,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/fNamePlaceholder"
-        android:inputType="textPersonName" >
+        android:inputType="textPersonName"
+        android:textColorHint="#eefbff"
+        android:textColor="#eefbff">
 
         <requestFocus />
     </EditText>
@@ -27,7 +30,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/lNamePlaceholder"
-        android:inputType="textPersonName" />
+        android:inputType="textPersonName"
+        android:textColorHint="#eefbff"
+        android:textColor="#eefbff" />
 
     <EditText
         android:id="@+id/email"
@@ -35,7 +40,9 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/emailPlaceholder"
-        android:inputType="textEmailAddress" />
+        android:inputType="textEmailAddress"
+        android:textColorHint="#eefbff"
+        android:textColor="#eefbff" />
 
     <EditText
         android:id="@+id/password"
@@ -43,11 +50,14 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/passwordHint"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:textColorHint="#eefbff"
+        android:textColor="#eefbff" />
 
     <Button
         android:id="@+id/registerUserBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/registerBtnTxt" />
+        android:text="@string/registerBtnTxt"
+        android:textColor="#eefbff" />
 </LinearLayout>

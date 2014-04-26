@@ -7,7 +7,7 @@
     <string name="title_activity_menu">Menu</string>
     <string name="title_activity_menu_screen">MenuScreen</string>
     <string name="title_activity_register">Register</string>
-    <string name="emailHint">email</string>
+    <string name="emailHint">Email</string>
     <string name="appTitleTxt">Tune Trends</string>
     <string name="registerBtnTxt">Register</string>
     <string name="submitBtnTxt">Log In</string>

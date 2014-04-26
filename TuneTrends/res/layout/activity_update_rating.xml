@@ -10,19 +10,46 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".UpdateRating"
-    android:background="@drawable/backtransbg">
+    android:background="@drawable/back">
 
-    <TextView
-        android:id="@+id/titlePlaceholder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Song" />
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/artistPlaceholder"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Artist" />
+        <ImageView
+            android:layout_width="78dp"
+            android:layout_height="78dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/ic_launcher" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/titlePlaceholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Song"
+                android:textColor="#f9ba56"
+                android:paddingTop="15dp"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/artistPlaceholder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Artist"
+                android:textColor="#f9ba56"
+                android:paddingTop="10dp"
+                android:textSize="18dp" />
+        </LinearLayout>
+
+    </LinearLayout>
 
     <TextView
         android:id="@+id/ratingValueTxt"
@@ -31,7 +58,9 @@
         android:layout_gravity="center"
         android:gravity="center"
         android:text="RATINGS"
-        android:textSize="50dp" />
+        android:textSize="50dp"
+        android:textColor="#eefbff"
+        android:typeface="sans" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -43,13 +72,15 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:text="Rate Up" />
+            android:text="Rate Up"
+            android:textColor="#eefbff" />
 
         <Button
             android:id="@+id/rateDownBtn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Rate Down" />
+            android:text="Rate Down"
+            android:textColor="#eefbff" />
     </LinearLayout>
 </LinearLayout>
