@@ -13,6 +13,7 @@
     android:background="@drawable/backtransbg"
     android:weightSum="1">
 
+
     <EditText
         android:id="@+id/title"
         android:layout_width="match_parent"

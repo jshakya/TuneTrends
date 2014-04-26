@@ -22,45 +22,47 @@ import android.widget.Toast;
 
 public class AddSong extends Activity {
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_add_song);
-		final Button addSong = (Button) findViewById(R.id.addSong);
-		final EditText title = (EditText) findViewById(R.id.title);
-		final EditText artist = (EditText) findViewById(R.id.artist);
-		
-		addSong.setOnClickListener(new View.OnClickListener() {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_add_song);
+        final Button addSong = (Button) findViewById(R.id.addSong);
+        final EditText title = (EditText) findViewById(R.id.title);
+        final EditText artist = (EditText) findViewById(R.id.artist);
 
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				if (title.getText().length() != 0
-						&& artist.getText().length() != 0) {
+        addSong.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                if (title.getText().length() != 0)
+                    if (artist.getText().length() != 0) {
 //					Track track = new Track(title.getText().toString(), artist
 //							.getText().toString());
-					MenuScreen.curUser.getTrackList().addSong(new Track(title.getText().toString(), artist
-							.getText().toString()) );
+                        MenuScreen.curUser.getTrackList().addSong(new Track(title.getText().toString(), artist
+                                .getText().toString()));
 
-					Intent i = new Intent(getApplicationContext(),
-							MenuScreen.class);
-					startActivity(i);
-					finish();
-				} else {
-					Toast.makeText(getApplicationContext(), "Fields empty",
-							Toast.LENGTH_LONG).show();
-				}
+                        Intent i = new Intent(getApplicationContext(),
+                                MenuScreen.class);
+                        startActivity(i);
+                        finish();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Fields empty",
+                                Toast.LENGTH_LONG).show();
+                    }
+                else {
+                    Toast.makeText(getApplicationContext(), "Fields empty",
+                            Toast.LENGTH_LONG).show();
+                }
                 onDestroy();
-			}
-		});
-	}
+            }
+        });
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.add_song, menu);
-		return true;
-	}
-
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.add_song, menu);
+        return true;
+    }
 }
