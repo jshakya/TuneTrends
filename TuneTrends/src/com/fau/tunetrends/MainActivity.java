@@ -1,6 +1,16 @@
 package com.fau.tunetrends;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import model.TrackList;
+import model.UserGroup;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -13,11 +23,16 @@ public class MainActivity extends Activity {
 
 	TextView emailInput;
 	TextView passwordInput;
+	
+    static UserGroup curUser;// = new UserGroup();
+    String FILENAME = "data.dat";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		this.loadFile();
 
 		Button submitBtn = (Button) findViewById(R.id.submitBtn);
 		Button registerBtn = (Button) findViewById(R.id.registerBtn);
@@ -71,6 +86,35 @@ public class MainActivity extends Activity {
 					Toast.LENGTH_LONG).show();
 		return false;
 	}
+	
+    public void saveFile() {
+        try {
+            FileOutputStream fos = null;
+            fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
+            ObjectOutputStream out = new ObjectOutputStream(fos);
+            out.writeObject(curUser.getTrackList());
+            fos.close();
+        } catch (IOException e) {
+
+        }
+    }
+
+    public void loadFile() {
+        try {
+            Toast.makeText(getApplicationContext(), "Loading App",
+                    Toast.LENGTH_LONG).show();
+//			File file = new File(getFilesDir(), FILENAME);
+            FileInputStream fis = new FileInputStream(new File(getFilesDir(), FILENAME));
+            ObjectInputStream in = new ObjectInputStream(fis);
+            curUser.getTrackList().setTrackList((TrackList) in.readObject());
+            fis.close();
+        } catch (IOException e) {
+
+        } catch (ClassNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
 
 

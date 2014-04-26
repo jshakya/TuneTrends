@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 //import java.io.FileInputStream;
 //import java.io.FileOutputStream;
 //import java.io.IOException;
@@ -9,8 +10,13 @@ import java.util.ArrayList;
 
 //import android.content.Context;
 
-public class UserGroup {
+public class UserGroup extends ArrayList<User> implements Serializable{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8260713332729190808L;
+	
 	public UserGroup() {
 		this.trackList = new TrackList();
 	}
@@ -35,6 +41,12 @@ public class UserGroup {
 	public void setGroupCode(int groupCode){
 		this.groupCode = groupCode;
 	}
+	
+	public void addUser(User u)
+	{
+		this.add(u);
+	}
+	/*
 	public ArrayList <User> getListUsers() {
 		return listUsers;
 	}
@@ -42,9 +54,9 @@ public class UserGroup {
 	public void setListUsers(ArrayList <User> listUsers) {
 		this.listUsers = listUsers;
 	}
-	
+	*/
 	
 	private TrackList trackList;
 	private int groupCode;
-	private ArrayList <User> listUsers;
+	//private ArrayList <User> listUsers;
 }
