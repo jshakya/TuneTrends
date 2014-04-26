@@ -27,6 +27,13 @@ import java.util.Map;
 import model.TrackList;
 import model.UserGroup;
 
+/**
+ * This is the screen that displays the songs in a list view. Users can click on the Menu button on their phone to access the add song screen.
+ * Click on a row of the table to view the rating and rate the song up or down.
+ * Uses Strategy pattern by inheriting from the Activity class
+ * @author Mike
+ *
+ */
 public class MenuScreen extends Activity {
 
     List<Map<String, String>> song;
@@ -72,9 +79,12 @@ public class MenuScreen extends Activity {
     }
 
     @Override
+    /**
+     * Performs the appropriate action based on which button in the menu is selected
+     */
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.item1:
+            case R.id.item1: //Creates a demo list of songs
                 curUserGroup.getTrackList().clear();
                 curUserGroup.getTrackList().addSong("Happy", "Pharell Williams", 10);
                 curUserGroup.getTrackList().addSong("Royals", "Lorde", 8);
@@ -83,15 +93,15 @@ public class MenuScreen extends Activity {
                 curUserGroup.getTrackList().addSong("Dark Horse ", "Katy Perry", 2);
                 changeListView();
                 break;
-            case R.id.item2:
+            case R.id.item2: //Moves to the Add Song class
                 Intent intent = new Intent(this, AddSong.class);
                 this.startActivity(intent);
                 break;
-            case R.id.item3:
+            case R.id.item3: //Removes the top song
                 curUserGroup.getTrackList().removeTopSong();
                 changeListView();
                 break;
-            case R.id.item4:
+            case R.id.item4: //Removes the bottom song
                 curUserGroup.getTrackList().removeBottomSong();
                 changeListView();
                 break;
@@ -108,6 +118,10 @@ public class MenuScreen extends Activity {
         return true;
     }
 
+    /**
+     * Method for updating the list of songs. Uses a SimpleAdapter to display the list
+     * Could maybe consider making this a private method
+     */
     public void changeListView() {
         song = new ArrayList<Map<String, String>>();
         for (int i = 0; i < curUserGroup.getTrackList().countSongs(); i++) {
@@ -152,6 +166,9 @@ public class MenuScreen extends Activity {
     }
 
     @Override
+    /**
+     * Save the contents of the app when leaving
+     */
     protected void onStop() {
         super.onStop();
         Toast.makeText(getApplicationContext(), "Saving App", Toast.LENGTH_LONG)
@@ -161,6 +178,9 @@ public class MenuScreen extends Activity {
     }
 
     @Override
+    /**
+     * Save the contents of the app when destroyed
+     */
     protected void onDestroy() {
         super.onStop();
         Toast.makeText(getApplicationContext(), "Destroy App", Toast.LENGTH_LONG)
@@ -170,6 +190,9 @@ public class MenuScreen extends Activity {
 
     }
 
+    /**
+     * Write the tracklist to a file to be used later.
+     */
     public void saveObject() {
         try {
             FileOutputStream fos = null;
@@ -182,6 +205,9 @@ public class MenuScreen extends Activity {
         }
     }
 
+    /**
+     * Read the current tracklist from a file
+     */
     public void loadObject() {
         try {
             Toast.makeText(getApplicationContext(), "Loading App",
