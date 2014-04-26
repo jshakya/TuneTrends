@@ -8,6 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * The register screen. Allows new user to register for use of the app, with name, email and password.
+ * Use of strategy pattern through inheriting Activity
+ * @author Mike
+ *
+ */
 public class Register extends Activity {
 
 	@Override
@@ -15,12 +21,14 @@ public class Register extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
 
+		//These are the UI elements from the XML
 		Button registerBtn = (Button) findViewById(R.id.registerUserBtn);
 		final EditText fName = (EditText) findViewById(R.id.fName);
 		final EditText lName = (EditText) findViewById(R.id.lName);
 		final EditText email = (EditText) findViewById(R.id.email);
 		final EditText password = (EditText) findViewById(R.id.password);
 
+		//Anonymous on click listener for the register button
 		registerBtn.setOnClickListener(new View.OnClickListener() {
 
 			@Override
