@@ -32,7 +32,8 @@ import model.UserGroup;
  * This is the screen that displays the songs in a list view. Users can click on the Menu button on their phone to access the add song screen.
  * Click on a row of the table to view the rating and rate the song up or down.
  * Uses Strategy pattern by inheriting from the Activity class
- * @author Mike, Jebin
+ * @author Mike
+ * @author Jebin
  *
  */
 public class MenuScreen extends Activity {
