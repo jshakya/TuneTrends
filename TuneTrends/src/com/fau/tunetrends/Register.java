@@ -1,12 +1,13 @@
 package com.fau.tunetrends;
 
-import model.User;
-import android.os.Bundle;
 import android.app.Activity;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
+import model.User;
 
 /**
  * The register screen. Allows new user to register for use of the app, with name, email and password.
@@ -40,8 +41,9 @@ public class Register extends Activity {
 				String passwordString = password.getText().toString();
 
 				User registeredUser = new User(fNameString, lNameString, emailString, passwordString);
-				
-				// Get values from fields
+                MainActivity.curUserGroup.addUser(registeredUser);
+                finish();
+                // Get values from fields
 
 				// Create new User
 
