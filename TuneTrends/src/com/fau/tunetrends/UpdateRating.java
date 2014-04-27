@@ -16,12 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 //import android.content.Context;
-/**
- * The Screen that displays the rating and allows the user to vote up or down.
- * Allows the user to vote more than once currently.
- * @author Mike, Jebin
- *
- */
+
 public class UpdateRating extends Activity {
 
     @Override
@@ -29,8 +24,6 @@ public class UpdateRating extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_rating);
-        
-        //UI elements
         final Button upBtn = (Button) findViewById(R.id.rateUpBtn);
         final Button downBtn = (Button) findViewById(R.id.rateDownBtn);
         final TextView ratingTxt = (TextView) findViewById(R.id.ratingValueTxt);
@@ -39,9 +32,7 @@ public class UpdateRating extends Activity {
 
         int position = 0;
 
-        //We were passed the position from MenuScreen through the Intent, need to extract it
         final Bundle extras = getIntent().getExtras();
-        //Toast message to confirm the position value is correct, should delete this section
         if (extras != null) {
             position = (int) extras.getLong("position");
             Toast.makeText(getApplicationContext(), String.valueOf(position),
@@ -60,7 +51,6 @@ public class UpdateRating extends Activity {
         ratingTxt.setText("RATINGS : "
                 + String.valueOf(MainActivity.curUserGroup.getTrackList().getTrackList()
                 .get(pos).getRatingValue()));
-        //Anonymous on click listener from the Rate up button. Increases rating and updates the display
         upBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -72,8 +62,6 @@ public class UpdateRating extends Activity {
             }
 
         });
-        
-        //Anonymous on click listener from the Rate down button. Decreases rating and updates the display
         downBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
