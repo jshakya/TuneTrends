@@ -19,7 +19,7 @@ import android.widget.Toast;
 /**
  * The Screen that displays the rating and allows the user to vote up or down.
  * Allows the user to vote more than once currently.
- * @author Mike, Jebin
+ * @author Mike
  *
  */
 public class UpdateRating extends Activity {
@@ -53,21 +53,21 @@ public class UpdateRating extends Activity {
         final int pos = position;
         // Setting the textView
         titleTxt.setText("Title : "
-                + MainActivity.curUserGroup.getTrackList().get(pos).getTitle());
+                + MenuScreen.curUserGroup.getTrackList().get(pos).getTitle());
         artistTxt.setText("Artist : "
-                + MainActivity.curUserGroup.getTrackList().get(pos).getArtist());
+                + MenuScreen.curUserGroup.getTrackList().get(pos).getArtist());
 
         ratingTxt.setText("RATINGS : "
-                + String.valueOf(MainActivity.curUserGroup.getTrackList().getTrackList()
+                + String.valueOf(MenuScreen.curUserGroup.getTrackList().getTrackList()
                 .get(pos).getRatingValue()));
         //Anonymous on click listener from the Rate up button. Increases rating and updates the display
         upBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                MainActivity.curUserGroup.getTrackList().get(pos).upRateValue();
+                MenuScreen.curUserGroup.getTrackList().get(pos).upRateValue();
                 ratingTxt.setText("RATINGS : "
-                        + String.valueOf(MainActivity.curUserGroup.getTrackList()
+                        + String.valueOf(MenuScreen.curUserGroup.getTrackList()
                         .getTrackList().get(pos).getRatingValue()));
             }
 
@@ -78,10 +78,10 @@ public class UpdateRating extends Activity {
 
             @Override
             public void onClick(View v) {
-                MainActivity.curUserGroup.getTrackList().get(pos)
+                MenuScreen.curUserGroup.getTrackList().get(pos)
                         .downRateValue();
                 ratingTxt.setText("RATINGS : "
-                        + String.valueOf(MainActivity.curUserGroup.getTrackList()
+                        + String.valueOf(MenuScreen.curUserGroup.getTrackList()
                         .getTrackList().get(pos).getRatingValue()));
             }
 
