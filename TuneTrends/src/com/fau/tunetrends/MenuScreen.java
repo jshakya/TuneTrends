@@ -42,13 +42,14 @@ public class MenuScreen extends Activity {
     //UserGroup curUserGroup;// = new UserGroup();
     String FILENAME = "data.dat";
     //TrackList trackList = curUserGroup.getTrackList();
-    static User signedUser;
+    static User signedUser = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (signedUser == null)
             signedUser = (User) getIntent().getSerializableExtra("user");
+
         setContentView(R.layout.activity_menu_screen);
 
         MainActivity.curUserGroup.getTrackList().sortSongs();

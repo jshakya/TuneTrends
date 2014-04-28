@@ -7,7 +7,6 @@ package com.fau.tunetrends;
 //import java.security.acl.LastOwnerException;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -51,9 +50,9 @@ public class AddSong extends Activity {
                         MainActivity.curUserGroup.getTrackList().addSong(new Track(title.getText().toString(), artist
                                 .getText().toString()));
 
-                        Intent i = new Intent(getApplicationContext(),
-                                MenuScreen.class);
-                        startActivity(i);
+//                        Intent i = new Intent(getApplicationContext(),
+//                                MenuScreen.class);
+//                        startActivity(i);
                         finish();
                     } else {
                         Toast.makeText(getApplicationContext(), "Fields empty",
@@ -63,7 +62,7 @@ public class AddSong extends Activity {
                     Toast.makeText(getApplicationContext(), "Fields empty",
                             Toast.LENGTH_LONG).show();
                 }
-                onDestroy();
+//                onDestroy();
             }
         });
     }
