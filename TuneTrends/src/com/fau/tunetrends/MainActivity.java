@@ -33,7 +33,7 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //JEBIN GITTEST
         if (curUserGroup == null) {
             curUserGroup = new UserGroup();
             this.loadFile();
