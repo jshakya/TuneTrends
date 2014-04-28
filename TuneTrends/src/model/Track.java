@@ -5,17 +5,15 @@ import java.io.Serializable;
 /**
  * Class for songs/tracks. Title/Artists should not change once created.
  *
- * @author Mike, Jebin
+ * @author Mike
+ * @author jshakya
  */
 public class Track implements Serializable {
 
-    /**
-     *
-     */
     private static final long serialVersionUID = -6205619219993159193L;
 
     /**
-     * MDR -- Auto generated constructor. I just set the title/artist to blank strings here. Should consider removing.
+     * MDR -- Default constructor setting all values to null or 0
      */
     public Track() {
         setTitle(new String());
@@ -26,7 +24,8 @@ public class Track implements Serializable {
 
     /**
      * MDR -- Use this constructor to create a new Track. Rating Value will be set to zero
-     *
+     * precondition: none
+     * postcondition: new track is created with a 0 rating value
      * @param title  the name of the song
      * @param artist the name of the artist
      */
@@ -38,7 +37,8 @@ public class Track implements Serializable {
 
     /**
      * JBN -- Use this constructor to create a new Track. Rating Value will be set to value provided
-     *
+     * precondition: none
+     * postcondition: new track is created with the given rating value
      * @param title  the name of the song
      * @param artist the name of the artist
      */
@@ -50,7 +50,8 @@ public class Track implements Serializable {
 
     /**
      * MDR -- Accessor for the song title
-     *
+     * precondition: none
+     * postcondition: track title is returned
      * @return title
      */
     public String getTitle() {

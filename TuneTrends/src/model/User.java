@@ -11,46 +11,32 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 8182641119844029747L;
 	/**
-	 * 
+	 * Default constructor should not be used and will not create a valid user
 	 */
 	public User() {
-		// TODO Auto-generated constructor stub
 	}
 	
-	public User(String fName, String lName, String email, String password)// ,UserGroup group)
+	/**
+	 * Constructor to create a new user
+	 * @param fName first name
+	 * @param lName last name
+	 * @param email email/username
+	 * @param password password
+	 */
+	public User(String fName, String lName, String email, String password)
 	{
 		setFName(fName);
 		setLName(lName);
-		//setGroup(group);
 		setEmail(email);
 		setPassword(password);
 		currentUser = this;
 	}
 	
-	/**
-	 * Might be a duplicate with the constructor? Or maybe do server calls here
-	 */
-	public void register()
-	{
-		
-	}
 	
 	/**
-	 * Method should submit to the list, since we already have a track
-	 * @param track the track to be submitted to the list
-	 */
-	public void submitSong (Track track)
-	{
-		
-	}
-	
-	/**
-	 * Submit a new rating for a track. I feel like this should return the track though
+	 * Submit a new rating for a track.
 	 * @param track track to have its rating changed
 	 * @param rating new rating
 	 */

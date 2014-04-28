@@ -19,13 +19,19 @@ public class TrackList extends ArrayList<Track> implements Serializable {
     private static final long serialVersionUID = 4580108724538741771L;
 
 
+    /**
+     * clears out existing values in TrackList
+     * precondition: none
+     * postcondition: tracklist is empty
+     */
     public TrackList() {
         this.clear();
     }
 
     /**
      * This adds the track to the list
-     *
+     * precondition: track needs to be initialized
+     * postcondition: the track is added to the end of the list
      * @param track to be added to the list
      */
     public void addSong(Track track) {
@@ -33,8 +39,9 @@ public class TrackList extends ArrayList<Track> implements Serializable {
     }
 
     /**
-     * This adds the newly created Track to the List
-     *
+     * This adds the newly created Track to end of the List
+     * precondition: none
+     * postcondition: new track is created and the track is added to the end of the list
      * @param trackName  Name of the Track
      * @param artistName Name of the Artist
      */
@@ -43,8 +50,9 @@ public class TrackList extends ArrayList<Track> implements Serializable {
     }
 
     /**
-     * This adds the newly created Track to the List
-     *
+     * This adds the newly created Track to end of the List
+     * precondition: none
+     * postcondition: new track is created and the track is added to the end of the list
      * @param trackName  Name of the Track
      * @param artistName Name of the Artist
      */
@@ -53,15 +61,22 @@ public class TrackList extends ArrayList<Track> implements Serializable {
     }
 
     /**
-     * This returns the TrackList of the usergroup if needed
-     * NO IMPLEMENTATIONS YET
+     * This returns the TrackList of the usergroup
+     * precondition: tracklist should be initialized
+     * postcondition: tracklist is returned
      *
-     * @return
+     * @return this
      */
     public TrackList getTrackList() {
         return this;
     }
 
+    /**
+     * sets the tracklist to the contents of the passed tracklist, especially while loading from a file
+     * precondition: none
+     * postcondition: tracklist is created from temp
+     * @param temp
+     */
     public void setTrackList(TrackList temp) {
         this.clear();
         for (Track track : temp) {
@@ -71,6 +86,8 @@ public class TrackList extends ArrayList<Track> implements Serializable {
 
     /**
      * This removes the top song of the list
+     * precondition: tracklist should not be empty
+     * postcondition: the top track is removed
      */
     public void removeTopSong() {
         this.remove(0);
@@ -78,6 +95,8 @@ public class TrackList extends ArrayList<Track> implements Serializable {
 
     /**
      * This removes the bottom song of the list
+     * precondition: tracklist should not be empty
+     * postcondition: the bottom track is removed
      */
     public void removeBottomSong() {
         this.remove(this.size() - 1);
@@ -85,8 +104,9 @@ public class TrackList extends ArrayList<Track> implements Serializable {
 
     /**
      * This returns the number of the songs in the list
-     *
-     * @return
+     * precondition: none
+     * postcondition: returns the size of the list
+     * @return this.size
      */
     public int countSongs() {
         return this.size();
@@ -94,20 +114,12 @@ public class TrackList extends ArrayList<Track> implements Serializable {
 
     /**
      * This sorts the songs in the list according to the ratingValues
-     *
-     * @param another
-     * @return
+     * precondition: none
+     * postcondition: the list will be sorted in order of highest rating to lowest rating
      */
     public void sortSongs() {
         Collections.sort(this, new trackComp());
     }
-
-
-//	public void setTrackList(ArrayList<Track> trackList) {
-//		TrackList = trackList;
-//	}
-
-//	private ArrayList<Track> trackList;
 }
 
 /**
