@@ -119,21 +119,23 @@ public class MainActivity extends Activity {
             ObjectOutputStream out = new ObjectOutputStream(fos);
             out.writeObject(curUserGroup);
             fos.close();
+            Toast.makeText(getApplicationContext(), "Saving AppData", Toast.LENGTH_LONG)
+                    .show();
         } catch (IOException e) {
             e.printStackTrace();
-
         }
     }
 
     public void loadFile() {
         try {
-            Toast.makeText(getApplicationContext(), "Loading App",
-                    Toast.LENGTH_LONG).show();
+
 //			File file = new File(getFilesDir(), FILENAME);
             FileInputStream fis = new FileInputStream(new File(getFilesDir(), FILENAME));
             ObjectInputStream in = new ObjectInputStream(fis);
             curUserGroup.setUserGroup((UserGroup) in.readObject());
             fis.close();
+            Toast.makeText(getApplicationContext(), "Loading AppData", Toast.LENGTH_LONG)
+                    .show();
         } catch (IOException e) {
             //to check errors on serialization
             e.printStackTrace();

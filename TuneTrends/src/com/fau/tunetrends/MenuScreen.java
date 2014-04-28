@@ -32,9 +32,9 @@ import model.UserGroup;
  * This is the screen that displays the songs in a list view. Users can click on the Menu button on their phone to access the add song screen.
  * Click on a row of the table to view the rating and rate the song up or down.
  * Uses Strategy pattern by inheriting from the Activity class
+ *
  * @author Mike
  * @author Jebin
- *
  */
 public class MenuScreen extends Activity {
 
@@ -42,13 +42,13 @@ public class MenuScreen extends Activity {
     //UserGroup curUserGroup;// = new UserGroup();
     String FILENAME = "data.dat";
     //TrackList trackList = curUserGroup.getTrackList();
-    User signedUser;
+    static User signedUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        signedUser = (User) getIntent().getSerializableExtra("user");
+        if (signedUser == null)
+            signedUser = (User) getIntent().getSerializableExtra("user");
         setContentView(R.layout.activity_menu_screen);
 
         MainActivity.curUserGroup.getTrackList().sortSongs();
@@ -104,7 +104,13 @@ public class MenuScreen extends Activity {
                 changeListView();
                 break;
             case R.id.item5:
-                Toast.makeText(getApplicationContext(), "User : " + signedUser.getEmail(), Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(),
+                        "User : " + signedUser.getEmail()
+                                + "\nPassword : " + signedUser.getPassword()
+                                + "\nFirst Name : " + signedUser.getFName()
+                                + "\nLast Name : " + signedUser.getLName()
+
+                        , Toast.LENGTH_LONG).show();
                 changeListView();
                 break;
             default:
@@ -173,8 +179,6 @@ public class MenuScreen extends Activity {
      */
     protected void onStop() {
         super.onStop();
-        Toast.makeText(getApplicationContext(), "Saving App", Toast.LENGTH_LONG)
-                .show();
         saveObject();
     }
 
@@ -184,11 +188,7 @@ public class MenuScreen extends Activity {
      */
     protected void onDestroy() {
         super.onStop();
-        Toast.makeText(getApplicationContext(), "Destroy App", Toast.LENGTH_LONG)
-                .show();
         saveObject();
-
-
     }
 
     /**
@@ -211,7 +211,7 @@ public class MenuScreen extends Activity {
      */
     public void loadObject() {
         try {
-            Toast.makeText(getApplicationContext(), "Loading App",
+            Toast.makeText(getApplicationContext(), "Loading AppData",
                     Toast.LENGTH_LONG).show();
 //			File file = new File(getFilesDir(), FILENAME);
             FileInputStream fis = new FileInputStream(new File(getFilesDir(), FILENAME));
@@ -219,6 +219,7 @@ public class MenuScreen extends Activity {
             MainActivity.curUserGroup.setUserGroup((UserGroup) in.readObject());
             fis.close();
         } catch (IOException e) {
+            e.printStackTrace();
 
         } catch (ClassNotFoundException e) {
             // TODO Auto-generated catch block
