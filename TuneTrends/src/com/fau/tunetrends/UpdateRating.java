@@ -1,12 +1,5 @@
 package com.fau.tunetrends;
 
-//import java.io.File;
-//import java.io.FileOutputStream;
-//import java.io.IOException;
-//import java.io.ObjectOutputStream;
-
-//import model.UserGroup;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -15,8 +8,12 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-//import android.content.Context;
-
+/**
+ * Screen that allows users to change the rating for any songs.
+ * Also displays the current rating value on screen
+ * @author Mike
+ * @author jshakya
+ */
 public class UpdateRating extends Activity {
 
     @Override
@@ -24,6 +21,7 @@ public class UpdateRating extends Activity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_rating);
+        //UI Elements
         final Button upBtn = (Button) findViewById(R.id.rateUpBtn);
         final Button downBtn = (Button) findViewById(R.id.rateDownBtn);
         final TextView ratingTxt = (TextView) findViewById(R.id.ratingValueTxt);
@@ -32,13 +30,12 @@ public class UpdateRating extends Activity {
 
         int position = 0;
 
+        //We're passed the position of the song in the tracklist, unloading it here
         final Bundle extras = getIntent().getExtras();
         if (extras != null) {
             position = (int) extras.getLong("position");
-            Toast.makeText(getApplicationContext(), String.valueOf(position),
-                    Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT)
+            Toast.makeText(getApplicationContext(), "error receiving track position", Toast.LENGTH_SHORT)
                     .show();
         }
         final int pos = position;
@@ -76,13 +73,4 @@ public class UpdateRating extends Activity {
         });
 
     }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.update_rating, menu);
-        return true;
-    }
-
-
 }

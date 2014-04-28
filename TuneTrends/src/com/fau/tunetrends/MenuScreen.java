@@ -34,14 +34,12 @@ import model.UserGroup;
  * Uses Strategy pattern by inheriting from the Activity class
  *
  * @author Mike
- * @author Jebin
+ * @author jshakya
  */
 public class MenuScreen extends Activity {
 
     List<Map<String, String>> song;
-    //UserGroup curUserGroup;// = new UserGroup();
     String FILENAME = "data.dat";
-    //TrackList trackList = curUserGroup.getTrackList();
     static User signedUser = null;
 
     @Override
@@ -66,6 +64,11 @@ public class MenuScreen extends Activity {
     }
 
     @Override
+    /**
+     * loads tracklist on resume of app
+     * precondition: none
+     * postcondition: listview is updated with saved songs
+     */
     protected void onResume() {
 
         super.onResume();
@@ -104,7 +107,7 @@ public class MenuScreen extends Activity {
                 MainActivity.curUserGroup.getTrackList().removeBottomSong();
                 changeListView();
                 break;
-            case R.id.item5:
+            case R.id.item5: //Displays the logged in user information for demonstration
                 Toast.makeText(getApplicationContext(),
                         "User : " + signedUser.getEmail()
                                 + "\nPassword : " + signedUser.getPassword()
@@ -117,19 +120,14 @@ public class MenuScreen extends Activity {
             default:
                 return super.onOptionsItemSelected(item);
         }
-        /*
-         * if (item.getItemId() == R.id.item2) { Intent i = new
-		 * Intent(getApplication(), AddSong.class); //startActivity(i);
-		 * //finish();
-		 * 
-		 * } return (super.onOptionsItemSelected(item));
-		 */
         return true;
     }
 
     /**
      * Method for updating the list of songs. Uses a SimpleAdapter to display the list
      * Could maybe consider making this a private method
+     * precondition: curUserGroup must exist
+     * postcondition: the list is loaded with the songs in tracklist
      */
     public void changeListView() {
         song = new ArrayList<Map<String, String>>();
@@ -139,12 +137,8 @@ public class MenuScreen extends Activity {
             datum.put("artist", MainActivity.curUserGroup.getTrackList().get(i).getArtist());
             song.add(datum);
         }
-        /*
-         * for (Track t : trackList) { Map<String, String> datum = new
-		 * HashMap<String, String>(2); datum.put("title", t.getTitle());
-		 * datum.put("artist", t.getArtist()); song.add(datum); }
-		 */
 
+        //Changes the hashmap to display track information in the list view
         SimpleAdapter adapter;
         adapter = new SimpleAdapter(this, song,
                 android.R.layout.simple_list_item_2, new String[]{"title",
@@ -160,23 +154,20 @@ public class MenuScreen extends Activity {
         lv.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                // When clicked, show a toast with the TextView text
-                // String number = String.valueOf(id);
-                // Toast.makeText(getApplicationContext(),
-                // number, Toast.LENGTH_SHORT).show();
 
                 Intent i = new Intent(getApplicationContext(),
                         UpdateRating.class);
                 i.putExtra("position", id);
                 startActivity(i);
-                // finish();
             }
         });
     }
 
     @Override
     /**
-     * Save the contents of the app when leaving
+     * Save file when instance is stopped, like when hitting back or leaving the screen.
+     * precondition: none
+     * postcondition: information is saved before closing
      */
     protected void onStop() {
         super.onStop();
@@ -185,7 +176,9 @@ public class MenuScreen extends Activity {
 
     @Override
     /**
-     * Save the contents of the app when destroyed
+     * Save file when instance is destroyed
+     * precondition: none
+     * postcondition: information is saved before closing
      */
     protected void onDestroy() {
         super.onStop();
@@ -193,7 +186,9 @@ public class MenuScreen extends Activity {
     }
 
     /**
-     * Write the tracklist to a file to be used later.
+     * Saves the object to the specified filename
+     * Precondition: curUserGroup must exist to prevent a crash
+     * Postcondition: data.dat is created and app data is saved inside
      */
     public void saveObject() {
         try {
@@ -208,13 +203,14 @@ public class MenuScreen extends Activity {
     }
 
     /**
-     * Read the current tracklist from a file
+     * Reads from the data.dat file to load the curUserGroup
+     * precondition: data.dat must exist
+     * postcondition: information in data.dat is saved in curUserGroup
      */
     public void loadObject() {
         try {
             Toast.makeText(getApplicationContext(), "Loading AppData",
                     Toast.LENGTH_LONG).show();
-//			File file = new File(getFilesDir(), FILENAME);
             FileInputStream fis = new FileInputStream(new File(getFilesDir(), FILENAME));
             ObjectInputStream in = new ObjectInputStream(fis);
             MainActivity.curUserGroup.setUserGroup((UserGroup) in.readObject());
@@ -223,7 +219,6 @@ public class MenuScreen extends Activity {
             e.printStackTrace();
 
         } catch (ClassNotFoundException e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }

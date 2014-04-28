@@ -20,12 +20,18 @@ import java.io.ObjectOutputStream;
 import model.User;
 import model.UserGroup;
 
+/**
+ * This is the login screen. Contains input fields for the username and password.
+ * Contains two buttons for login and register.
+ * @author Mike
+ * @author jshakya
+ */
 public class MainActivity extends Activity {
 
     TextView emailInput;
     TextView passwordInput;
 
-    static UserGroup curUserGroup;// = new UserGroup();
+    static UserGroup curUserGroup;
     String FILENAME = "data.dat";
 
 
@@ -38,7 +44,6 @@ public class MainActivity extends Activity {
             curUserGroup = new UserGroup();
             this.loadFile();
         }
-        //constant saver
         this.saveFile();
 
         Button submitBtn = (Button) findViewById(R.id.submitBtn);
@@ -46,22 +51,17 @@ public class MainActivity extends Activity {
         // Validating Password
         emailInput = (TextView) findViewById(R.id.emailInput);
         passwordInput = (TextView) findViewById(R.id.passwordInput);
-        // final Boolean flag;
 
         submitBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-                // JBN Remove if part to remove authorization
                 if (isUserInDB() != null) {
                     Intent i = new Intent(getApplicationContext(),
                             MenuScreen.class);
                     i.putExtra("user", isUserInDB());
                     MenuScreen.signedUser = null;
                     startActivity(i);
-
-
-                    // finish();
                 }
             }
         });
@@ -72,29 +72,37 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 Intent i = new Intent(getApplicationContext(), Register.class);
                 startActivity(i);
-                // finish();
             }
         });
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
+    /**
+     * Save file when instance is destroyed
+     * precondition: none
+     * postcondition: information is saved before closing
+     */
     protected void onDestroy() {
         super.onDestroy();
         saveFile();
     }
 
+    /**
+     * Save file when instance is stopped, like when hitting back or leaving the screen.
+     * precondition: none
+     * postcondition: information is saved before closing
+     */
     protected void onStop() {
         super.onStop();
         saveFile();
     }
 
+    /**
+     * Authentication function returning a user to be used in Menu Screen
+     * precondition: curUserGroup must be initialized else it will crash
+     * postcondition: returns the matching user
+     * @return A user in the database matching email and password, a new user, or null if not found.
+     */
     private User isUserInDB() {
         for (User temp : MainActivity.curUserGroup) {
             if (emailInput.getText().toString().equals(temp.getEmail()) && passwordInput.getText().toString().equals(temp.getPassword())) {
@@ -113,7 +121,11 @@ public class MainActivity extends Activity {
         return null;
     }
 
-
+    /**
+     * Saves the object to the specified filename
+     * Precondition: curUserGroup must exist to prevent a crash
+     * Postcondition: data.dat is created and app data is saved inside
+     */
     public void saveFile() {
         try {
             FileOutputStream fos = null;
@@ -128,6 +140,11 @@ public class MainActivity extends Activity {
         }
     }
 
+    /**
+     * Reads from the data.dat file to load the curUserGroup
+     * precondition: data.dat must exist
+     * postcondition: information in data.dat is saved in curUserGroup
+     */
     public void loadFile() {
         try {
 

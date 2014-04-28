@@ -20,6 +20,7 @@ import model.User;
  * Use of strategy pattern through inheriting Activity
  *
  * @author Mike
+ * @author jshakya
  */
 public class Register extends Activity {
 
@@ -59,6 +60,13 @@ public class Register extends Activity {
 
     }
 
+    /**
+     * Checks if the username has already been used
+     * precondition: curUserGroup exists
+     * postcondition: true or false value returned
+     * @param tempEmail the username entered in the textfield
+     * @return true if the user is found, false if not
+     */
     private Boolean userExists(String tempEmail) {
         for (User temp : MainActivity.curUserGroup) {
             if (tempEmail.equals(temp.getEmail())) {
@@ -68,16 +76,10 @@ public class Register extends Activity {
         return false;
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.register, menu);
-        return true;
-    }
-
     /**
-     * Write the tracklist to a file to be used later.
+     * Saves the object to the specified filename
+     * Precondition: curUserGroup must exist to prevent a crash
+     * Postcondition: data.dat is created and app data is saved inside
      */
     public void saveObject() {
         try {
